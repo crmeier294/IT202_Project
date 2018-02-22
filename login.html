@@ -1,0 +1,73 @@
+<!DOCTYPE html5>
+
+<style>
+
+<!-- selector {property : value; --;} -->
+fieldset { width : 70%; margin : auto; }
+
+</style>
+
+<script>
+function check_data()
+{
+	
+	/**
+	   Pointer: point to an element on the page
+	   Trim will delete/trim any leading and trialing spaces
+	**/
+	
+	//variables
+	//apply trim to remove unecessary spaces
+	var ptrUser = document.getElementById("user")
+	var ptrPass = document.getElementById("pass")
+	var ptrA  = document.getElementById("A")
+	var ptrU  = document.getElementById("U")
+
+	
+	//trim ptr user
+	var ptrUserValue = ptrUser.value
+	
+	var ptrPassValue = ptrPass.value	
+	
+	//if none of A and U are checked then alert bad radio
+	if ( !ptrA.checked && !ptrU.checked)
+	{
+		alert('Error: Bad radio');
+		return false;
+	}
+	
+	//if User or Pass is empty then(notify "bad"; return false ;)
+	if ( ptrUserValue.trim() == "" || ptrPassValue.trim() == "")
+	{
+		alert('Error: empty username or password');
+		return false;
+	}	
+		
+}
+</script>
+
+<form action = "login.php" onsubmit = "return check_data()">
+
+<fieldset style = "background : #ffff00; width : 70%;"  > <legend> Login Form </legend>
+
+Name <input type = text name = "user" id = "user"
+	autocomplete = "off"
+	placeholder  = "Enter user name"
+	autofocus    = "on"
+	><br>
+
+Password <input type = text name = "pass" id = "pass"
+	autocomplete = "off"
+	placeholder  = "Enter password"
+	autofocus    = "on"
+	required
+	><br>
+
+Admin  <input type = radio name = "type" id = "A"  value = "A"> <br>
+User   <input type = radio name = "type" id = "U"  value = "U"> <br>
+
+<input type = submit ><br>
+
+</fieldset>
+
+</form>
